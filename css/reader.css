@@ -1,0 +1,92 @@
+/* ---------- PDF o'quvchi ---------- */
+.reader-page { background: var(--surface-2); }
+
+.reader-toolbar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 8px 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.reader-toolbar .tb-group { display: flex; align-items: center; gap: 5px; }
+.reader-toolbar .tb-sep { width: 1px; height: 26px; background: var(--border); margin: 0 4px; }
+.reader-toolbar .tb-btn {
+  height: 36px; min-width: 36px; padding: 0 10px; border-radius: 9px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text);
+  cursor: pointer; font-size: 14px; font-family: inherit;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.reader-toolbar .tb-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.reader-toolbar .tb-btn:disabled { opacity: 0.45; cursor: default; }
+.reader-toolbar .tb-btn.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.reader-toolbar .page-input {
+  width: 58px; height: 36px; text-align: center; border-radius: 9px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text); font-size: 14px;
+}
+.reader-toolbar .page-total { font-size: 13.5px; color: var(--text-muted); }
+.reader-toolbar .title-el {
+  font-weight: 700; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 300px; margin-right: 6px;
+}
+.reader-toolbar .spacer { flex: 1; }
+
+.reader-container {
+  max-width: 1000px; margin: 0 auto; padding: 18px 14px 60px;
+}
+
+#pdf-canvas-wrap { position: relative; margin: 0 auto; line-height: 0; box-shadow: var(--shadow); border-radius: 4px; overflow: hidden; background: #fff; }
+#pdf-canvas { display: block; max-width: 100%; }
+#pdf-highlight-layer { position: absolute; inset: 0; pointer-events: none; }
+
+.search-panel {
+  position: fixed; top: 60px; right: 18px; z-index: 70;
+  width: 320px; max-width: calc(100vw - 36px);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: var(--shadow); padding: 14px; display: none;
+}
+.search-panel.open { display: block; }
+.search-panel input {
+  width: 100%; height: 38px; padding: 0 12px; border-radius: 9px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text); font-size: 14px;
+}
+.search-panel .results { max-height: 300px; overflow: auto; margin-top: 10px; }
+.search-panel .result-item {
+  padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.search-panel .result-item:hover { background: var(--accent-soft); }
+.search-panel .result-item b { color: var(--accent); }
+.search-panel .no-results { color: var(--text-muted); font-size: 13px; padding: 8px; }
+
+.side-panel {
+  position: fixed; top: 60px; left: 18px; z-index: 70;
+  width: 300px; max-width: calc(100vw - 36px); max-height: calc(100vh - 90px); overflow: auto;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: var(--shadow); padding: 14px; display: none;
+}
+.side-panel.open { display: block; }
+.side-panel h4 { margin: 4px 0 10px; font-size: 15px; }
+.side-panel .bm-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 8px 10px; border-radius: 8px; font-size: 13.5px; cursor: pointer;
+}
+.side-panel .bm-item:hover { background: var(--accent-soft); }
+.side-panel .bm-item .del { color: var(--danger); border: none; background: none; cursor: pointer; font-size: 14px; }
+
+.reader-loading {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  padding: 90px 20px; color: var(--text-muted); font-size: 14.5px;
+}
+.spinner {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.reader-error { text-align: center; padding: 80px 20px; }
+
+@media (max-width: 760px) {
+  .reader-toolbar { padding: 6px 8px; gap: 5px; }
+  .reader-toolbar .title-el { display: none; }
+  .reader-toolbar .tb-btn { height: 34px; min-width: 34px; padding: 0 8px; }
+  .search-panel, .side-panel { top: auto; bottom: 12px; left: 12px; right: 12px; width: auto; }
+}

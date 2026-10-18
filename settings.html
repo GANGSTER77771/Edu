@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sozlamalar — EDUKITOB</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/settings.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-app-chrome>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/index.html">
+        <span class="logo-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+        EDU<b>KITOB</b>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Asosiy menyu">
+        <a href="/index.html" title="Bosh sahifa" aria-label="Bosh sahifa"><i class="fa-solid fa-house" aria-hidden="true"></i><span>Bosh sahifa</span></a>
+        <a href="/library.html" title="Kutubxona" aria-label="Kutubxona"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Kutubxona</span></a>
+        <a href="/books.html" title="Barcha kitoblar" aria-label="Barcha kitoblar"><i class="fa-solid fa-book" aria-hidden="true"></i><span>Barcha kitoblar</span></a>
+        <a href="/tests.html" title="Testlar" aria-label="Testlar"><i class="fa-solid fa-clipboard-question" aria-hidden="true"></i><span>Testlar</span></a>
+        <a href="/about.html" title="Sayt haqida" aria-label="Sayt haqida"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>Sayt haqida</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Rejimni almashtirish"><span class="theme-icon"><i class="fa-solid fa-moon" aria-hidden="true"></i></span></button>
+        <button class="icon-btn mobile-toggle" id="mobile-toggle" type="button" aria-label="Menyu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+        <div id="auth-slot" style="display:flex;gap:8px"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="settings-head">
+      <h1><i class="fa-solid fa-gear" aria-hidden="true"></i> Sozlamalar</h1>
+      <p class="muted">Hisobingiz, ko‘rinish va o‘qish parametrlarini boshqaring.</p>
+    </div>
+
+    <div class="settings-layout">
+      <aside class="settings-nav" aria-label="Sozlamalar bo'limlari">
+        <a href="#sec-account" class="active"><i class="fa-solid fa-user" aria-hidden="true"></i> Hisob va profil</a>
+        <a href="#sec-appearance"><i class="fa-solid fa-palette" aria-hidden="true"></i> Tashqi ko‘rinish</a>
+        <a href="#sec-reading"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Kitob o‘qish</a>
+        <a href="#sec-notifications"><i class="fa-solid fa-bell" aria-hidden="true"></i> Bildirishnomalar</a>
+        <a href="#sec-downloads"><i class="fa-solid fa-download" aria-hidden="true"></i> Yuklab olish</a>
+        <a href="#sec-security"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Xavfsizlik</a>
+      </aside>
+
+      <div class="settings-content">
+        <!-- 1. Hisob va profil -->
+        <section id="sec-account" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-user" aria-hidden="true"></i></span>
+            <div>
+              <h2>Hisob va profil</h2>
+              <p>Shaxsiy ma’lumotlar, parol va Telegram</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Profilni tahrirlash</div>
+              <div class="row-desc">Ismingizni o‘zgartiring. Email manzil o‘zgarmas qoladi.</div>
+              <form id="profile-form" class="row-form hidden">
+                <div class="form-group">
+                  <label for="profile-name">To‘liq ism</label>
+                  <input type="text" id="profile-name" maxlength="120" required>
+                </div>
+                <div class="form-group">
+                  <label for="profile-email">Email</label>
+                  <input type="email" id="profile-email" disabled>
+                  <div class="hint"><i class="fa-solid fa-lock" aria-hidden="true"></i> Email manzilni o‘zgartirib bo‘lmaydi</div>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i> Saqlash</button>
+              </form>
+            </div>
+            <button class="btn btn-outline btn-sm" type="button" data-collapse="profile-form"><i class="fa-solid fa-pen" aria-hidden="true"></i> Tahrirlash</button>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-key" aria-hidden="true"></i> Parolni o‘zgartirish</div>
+              <div class="row-desc">Yangi parol saqlanganda boshqa qurilmalar avtomatik chiqib ketadi.</div>
+              <form id="password-form" class="row-form hidden">
+                <div class="form-group">
+                  <label for="pass-current">Joriy parol</label>
+                  <input type="password" id="pass-current" autocomplete="current-password" required>
+                </div>
+                <div class="form-group">
+                  <label for="pass-new">Yangi parol</label>
+                  <input type="password" id="pass-new" autocomplete="new-password" minlength="8" required>
+                  <div class="hint">Kamida 8 belgi, harf va raqam bo‘lishi shart</div>
+                </div>
+                <div class="form-group">
+                  <label for="pass-repeat">Yangi parolni takrorlang</label>
+                  <input type="password" id="pass-repeat" autocomplete="new-password" required>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-shield" aria-hidden="true"></i> Parolni yangilash</button>
+              </form>
+            </div>
+            <button class="btn btn-outline btn-sm" type="button" data-collapse="password-form"><i class="fa-solid fa-pen" aria-hidden="true"></i> Tahrirlash</button>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-brands fa-telegram" aria-hidden="true"></i> Telegramni ulash</div>
+              <div class="row-desc">Telegram username'ingizni kiriting — yangiliklar uchun aloqa kanali.</div>
+              <form id="telegram-form" class="row-form hidden">
+                <div class="form-group">
+                  <label for="tg-username">Telegram username</label>
+                  <input type="text" id="tg-username" placeholder="masalan: edukitob_user" maxlength="32">
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-link" aria-hidden="true"></i> Ulash</button>
+                  <button class="btn btn-outline btn-sm" type="button" id="tg-unlink"><i class="fa-solid fa-link-slash" aria-hidden="true"></i> Uzish</button>
+                </div>
+              </form>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span id="tg-status" class="status-badge gray">Ulanmagan</span>
+              <button class="btn btn-outline btn-sm" type="button" data-collapse="telegram-form"><i class="fa-solid fa-pen" aria-hidden="true"></i> Tahrirlash</button>
+            </div>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Hisobdan chiqish</div>
+              <div class="row-desc">Shu qurilmadagi sessiya yopiladi.</div>
+            </div>
+            <button class="btn btn-outline btn-sm" type="button" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i> Chiqish</button>
+          </div>
+        </section>
+
+        <!-- 2. Tashqi ko'rinish -->
+        <section id="sec-appearance" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></span>
+            <div>
+              <h2>Tashqi ko‘rinish</h2>
+              <p>Rejim va matn o‘lchami</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> Yorug‘ / qorong‘i rejim</div>
+              <div class="row-desc">Qorong‘i rejim kechki o‘qish uchun qulay.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dark-switch" aria-label="Qorong'i rejim">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> Matn o‘lchami</div>
+              <div class="row-desc">Butun sayt matni uchun qulaylik darajasi.</div>
+            </div>
+            <div class="seg" id="text-size-seg" role="group" aria-label="Matn o'lchami">
+              <button type="button" data-size="0.9">90%</button>
+              <button type="button" data-size="1" class="active">100%</button>
+              <button type="button" data-size="1.15">115%</button>
+              <button type="button" data-size="1.3">130%</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Kitob o'qish -->
+        <section id="sec-reading" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+            <div>
+              <h2>Kitob o‘qish</h2>
+              <p>Reader xatti-harakati</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> PDF o‘qish rejimi</div>
+              <div class="row-desc">Kitob ochilishidagi standart ko‘rinish.</div>
+            </div>
+            <select id="reader-mode" class="inline-select" aria-label="PDF o'qish rejimi">
+              <option value="page">Sahifa bo‘yicha</option>
+              <option value="width">Ekran eni bo‘yicha</option>
+            </select>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-bookmark" aria-hidden="true"></i> Oxirgi sahifadan davom ettirish</div>
+              <div class="row-desc">Kitob qayerda qoldirilgan bo‘lsa, o‘sha sahifadan ochiladi.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="reader-continue" checked aria-label="Oxirgi sahifadan davom ettirish">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Ekran yo‘nalishi</div>
+              <div class="row-desc">Telefonni yotim (landscape) holatga o‘tkazishni eslatadi.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="reader-orient" checked aria-label="Ekran yo'nalishi eslatmasi">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- 4. Bildirishnomalar -->
+        <section id="sec-notifications" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-bell" aria-hidden="true"></i></span>
+            <div>
+              <h2>Bildirishnomalar</h2>
+              <p>Qaysi yangiliklardan xabardor bo‘lasiz</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-book" aria-hidden="true"></i> Yangi kitoblar</div>
+              <div class="row-desc">Sinfingizga oid yangi darsliklar chiqqanda xabar.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="pref-new-books" aria-label="Yangi kitoblar bildirishnomasi">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-clipboard-question" aria-hidden="true"></i> Test va topshiriqlar</div>
+              <div class="row-desc">O‘qituvchi yangi test e’lon qilganda xabar.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="pref-tests" aria-label="Test bildirishnomalari">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> Eslatmalar</div>
+              <div class="row-desc">O‘qishni davom ettirish va muddati tugayotgan testlar haqida.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="pref-reminders" aria-label="Eslatmalar">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+        </section>
+
+        <!-- 5. Yuklab olish -->
+        <section id="sec-downloads" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-download" aria-hidden="true"></i></span>
+            <div>
+              <h2>Yuklab olish</h2>
+              <p>Yuklab olingan kitoblar va kesh</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-folder-open" aria-hidden="true"></i> Yuklangan kitoblar</div>
+              <div class="row-desc" id="downloads-summary">Yuklanmoqda...</div>
+              <div id="downloads-list" class="downloads-list"></div>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-wifi" aria-hidden="true"></i> Faqat Wi-Fi orqali yuklash</div>
+              <div class="row-desc">Mobil internetda katta fayllar yuklanmaydi.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="wifi-only" aria-label="Faqat Wi-Fi orqali yuklash">
+              <span class="track"><span class="knob"></span></span>
+            </label>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-broom" aria-hidden="true"></i> Keshni tozalash</div>
+              <div class="row-desc" id="cache-info">Brauzer keshi hajmi hisoblanmoqda...</div>
+            </div>
+            <button class="btn btn-outline btn-sm" type="button" id="cache-clear"><i class="fa-solid fa-broom" aria-hidden="true"></i> Tozalash</button>
+          </div>
+        </section>
+
+        <!-- 6. Xavfsizlik -->
+        <section id="sec-security" class="settings-card">
+          <div class="settings-card-head">
+            <span class="sec-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <div>
+              <h2>Xavfsizlik</h2>
+              <p>Qurilmalar, sessiyalar va hisob</p>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-laptop" aria-hidden="true"></i> Faol qurilmalar</div>
+              <div class="row-desc">Hisobingizga kirgan qurilmalar.</div>
+              <div id="sessions-list" class="sessions-list"></div>
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="row-info">
+              <div class="row-title"><i class="fa-solid fa-user-slash" aria-hidden="true"></i> Sessiyalarni boshqarish</div>
+              <div class="row-desc">Boshqa barcha qurilmalardan bir vaqtda chiqishingiz mumkin.</div>
+            </div>
+            <button class="btn btn-outline btn-sm" type="button" id="revoke-others"><i class="fa-solid fa-user-slash" aria-hidden="true"></i> Boshqa qurilmalardan chiqish</button>
+          </div>
+
+          <div class="settings-row no-border">
+            <div class="row-info">
+              <div class="row-title danger-text"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Hisobni o‘chirish</div>
+              <div class="row-desc">Amal qaytarilmaydi: o‘qish tarixi, sevimlilar va natijalar butunlay o‘chadi.</div>
+            </div>
+            <button class="btn btn-danger btn-sm" type="button" id="delete-account-btn"><i class="fa-solid fa-trash-can" aria-hidden="true"></i> Hisobni o‘chirish</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Hisobni o'chirish modali -->
+  <div class="modal-overlay hidden" id="delete-modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+      <button class="modal-close" type="button" id="delete-modal-x" aria-label="Yopish"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <h3 id="delete-modal-title"><i class="fa-solid fa-triangle-exclamation danger-text" aria-hidden="true"></i> Hisobni o‘chirish</h3>
+      <p style="color:var(--text-muted);font-size:14px">
+        Hisobingiz o‘chirilgacha <b id="delete-countdown">5</b> soniya. Bu amalni <b>qaytarib bo‘lmaydi</b>:
+        o‘qish tarixi, sevimlilar, xatcho‘plar va test natijalari butunlay o‘chib ketadi.
+      </p>
+      <div id="delete-error" class="form-error hidden"></div>
+      <div class="form-group">
+        <label for="delete-password">Tasdiqlash uchun parolingizni kiriting</label>
+        <input type="password" id="delete-password" autocomplete="current-password">
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline" type="button" id="delete-cancel">Bekor qilish</button>
+        <button class="btn btn-danger" type="button" id="delete-confirm" disabled>
+          <i class="fa-solid fa-trash-can" aria-hidden="true"></i> O‘chirish (<span id="delete-confirm-countdown">5</span>)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span id="footer-year"></span> EDUKITOB</span>
+        <span><a href="/privacy.html"><i class="fa-solid fa-angle-right" aria-hidden="true"></i>Maxfiylik siyosati</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/settings.js"></script>
+</body>
+</html>

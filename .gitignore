@@ -1,0 +1,11 @@
+node_modules/
+.env
+data/
+storage/pdfs/*
+storage/covers/*
+storage/imports/*
+!storage/pdfs/.gitkeep
+!storage/covers/.gitkeep
+!storage/imports/.gitkeep
+*.log
+.DS_Store

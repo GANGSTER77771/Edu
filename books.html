@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kitoblar — EDUKITOB</title>
+  <meta name="description" content="Sinf, fan, til va yil bo‘yicha filtrlangan kitoblar ro‘yxati.">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-app-chrome>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/index.html">
+        <span class="logo-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+        EDU<b>KITOB</b>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Asosiy menyu">
+        <a href="/index.html" title="Bosh sahifa" aria-label="Bosh sahifa"><i class="fa-solid fa-house" aria-hidden="true"></i><span>Bosh sahifa</span></a>
+        <a href="/library.html" title="Kutubxona" aria-label="Kutubxona"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Kutubxona</span></a>
+        <a href="/books.html" title="Barcha kitoblar" aria-label="Barcha kitoblar"><i class="fa-solid fa-book" aria-hidden="true"></i><span>Barcha kitoblar</span></a>
+        <a href="/tests.html" title="Testlar" aria-label="Testlar"><i class="fa-solid fa-clipboard-question" aria-hidden="true"></i><span>Testlar</span></a>
+        <a href="/about.html" title="Sayt haqida" aria-label="Sayt haqida"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>Sayt haqida</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Rejimni almashtirish"><span class="theme-icon"><i class="fa-solid fa-moon" aria-hidden="true"></i></span></button>
+        <button class="icon-btn mobile-toggle" id="mobile-toggle" type="button" aria-label="Menyu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+        <div id="auth-slot" style="display:flex;gap:8px"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="crumbs" id="crumbs"><a href="/index.html">Bosh sahifa</a><span class="sep">›</span>Kitoblar</div>
+    <h1 style="font-size:26px;margin:6px 0 18px" id="page-title">Kitoblar</h1>
+
+    <form class="filters-bar" id="filters">
+      <div class="field grow">
+        <label for="f-q">Qidiruv</label>
+        <input type="search" id="f-q" placeholder="Nomi, muallifi, fani...">
+      </div>
+      <div class="field">
+        <label for="f-category">Adabiyot turi</label>
+        <select id="f-category"><option value="">Barchasi</option></select>
+      </div>
+      <div class="field">
+        <label for="f-class">Sinf</label>
+        <select id="f-class"><option value="">Barchasi</option></select>
+      </div>
+      <div class="field">
+        <label for="f-subject">Fan</label>
+        <select id="f-subject"><option value="">Barchasi</option></select>
+      </div>
+      <div class="field">
+        <label for="f-language">Til</label>
+        <select id="f-language"><option value="">Barchasi</option></select>
+      </div>
+      <div class="field">
+        <label for="f-sort">Tartib</label>
+        <select id="f-sort">
+          <option value="new">Yangi qo‘shilgan</option>
+          <option value="popular">Ko‘p o‘qilgan</option>
+          <option value="title">Alifbo tartibi</option>
+          <option value="year">Nashr yili</option>
+        </select>
+      </div>
+      <div class="field">
+        <button class="btn btn-primary" type="submit">Qo‘llash</button>
+        <button class="btn btn-ghost" type="button" id="clear-filters">Tozalash</button>
+      </div>
+    </form>
+
+    <p class="muted" id="result-count" style="margin:0 0 14px"></p>
+    <div class="books-grid" id="books-grid"></div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span id="footer-year"></span> EDUKITOB</span>
+        <span><a href="/privacy.html"><i class="fa-solid fa-angle-right" aria-hidden="true"></i>Maxfiylik siyosati</a> · <a href="/contact.html"><i class="fa-solid fa-angle-right" aria-hidden="true"></i>Aloqa</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/books.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Statistika — Admin | EDUKITOB</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="flex items-center gap-1">
+        <button class="icon-btn mobile-toggle" id="admin-menu-toggle" type="button" aria-label="Menyu">☰</button>
+        <a class="brand" href="/admin/index.html">
+          <svg class="logo" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect x="3" y="5" width="20" height="24" rx="3" fill="#2f80ed"/><rect x="11" y="7" width="20" height="24" rx="3" fill="#1f3c5d"/><path d="M16 14h10M16 19h10M16 24h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          EDU<b>KITOB</b>
+        </a>
+        <span class="role-badge admin">Admin</span>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" data-theme-toggle type="button" aria-label="Rejimni almashtirish"><span class="theme-icon">☾</span></button>
+        <span id="admin-user-name" class="muted" style="font-size:14px"></span>
+        <button class="btn btn-outline btn-sm" id="admin-logout" type="button">Chiqish</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="group-title">Boshqaruv</div>
+      <a href="/admin/index.html"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="/admin/statistics.html"><i class="fa-solid fa-chart-line"></i> Statistika</a>
+      <a href="/admin/audit.html"><i class="fa-solid fa-clipboard-list"></i> Audit jurnali</a>
+      <div class="group-title">Kitoblar</div>
+      <a href="/admin/books.html"><i class="fa-solid fa-book"></i> Barcha kitoblar</a>
+      <a href="/admin/add-book.html"><i class="fa-solid fa-plus"></i> Kitob qo‘shish</a>
+      <a href="/admin/tools.html"><i class="fa-solid fa-file-import"></i> Ommaviy yuklash / Import</a>
+      <div class="group-title">Platforma</div>
+      <a href="/admin/subjects.html"><i class="fa-solid fa-layer-group"></i> Fanlar va tillar</a>
+      <a href="/admin/tests.html"><i class="fa-solid fa-clipboard-question"></i> Testlar</a>
+      <a href="/admin/users.html"><i class="fa-solid fa-users"></i> Foydalanuvchilar</a>
+      <a href="/admin/settings.html"><i class="fa-solid fa-gear"></i> Sozlamalar</a>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <h1>Statistika</h1>
+        <select id="days" style="height:38px;padding:0 12px;border-radius:9px;border:1px solid var(--border);background:var(--surface)">
+          <option value="7">So‘nggi 7 kun</option>
+          <option value="14" selected>So‘nggi 14 kun</option>
+          <option value="30">So‘nggi 30 kun</option>
+          <option value="90">So‘nggi 90 kun</option>
+        </select>
+      </div>
+
+      <div class="admin-card">
+        <h2>Ko‘rishlar</h2>
+        <div class="daily-bars" id="bars-views"></div>
+      </div>
+      <div class="admin-card">
+        <h2>Yuklab olishlar</h2>
+        <div class="daily-bars" id="bars-downloads"></div>
+      </div>
+      <div class="admin-card">
+        <h2>Test topshirishlar</h2>
+        <div class="daily-bars" id="bars-attempts"></div>
+      </div>
+
+      <div class="flex gap-2 flex-wrap" style="align-items:flex-start">
+        <div class="admin-card flex-1" style="min-width:320px">
+          <h2>Eng ko‘p o‘qilgan kitoblar</h2>
+          <div class="table-wrap" style="border:none">
+            <table class="data" id="top-books">
+              <thead><tr><th>Kitob</th><th>Ko‘rish</th><th>Yuklab olish</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="admin-card flex-1" style="min-width:320px">
+          <h2>Eng ko‘p topshirilgan testlar</h2>
+          <div class="table-wrap" style="border:none">
+            <table class="data" id="top-tests">
+              <thead><tr><th>Test</th><th>Kod</th><th>Topshirish</th><th>O‘rtacha</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/admin/statistics.js"></script>
+</body>
+</html>

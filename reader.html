@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF o‘quvchi — EDUKITOB</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/reader.css">
+</head>
+<body class="reader-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/index.html">
+        <span class="logo-badge"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+        EDU<b>KITOB</b>
+      </a>
+      <div class="header-actions" style="margin-left:auto">
+        <a class="btn btn-ghost btn-sm" href="/index.html" style="height:36px">← Saytga qaytish</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="reader-toolbar" id="toolbar">
+    <span class="title-el" id="rd-title">Yuklanmoqda...</span>
+    <div class="tb-group">
+      <button class="tb-btn" id="btn-prev" title="Oldingi sahifa (←)" type="button">←</button>
+      <input class="page-input" id="page-input" type="number" min="1" value="1" aria-label="Sahifa raqami">
+      <span class="page-total" id="page-total">/ —</span>
+      <button class="tb-btn" id="btn-next" title="Keyingi sahifa (→)" type="button">→</button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group">
+      <button class="tb-btn" id="btn-zoom-out" title="Kichraytirish (-)" type="button">−</button>
+      <button class="tb-btn" id="btn-zoom-in" title="Kattalashtirish (+)" type="button">+</button>
+      <button class="tb-btn" id="btn-fit-width" title="Ekran kengligiga moslash" type="button">Kenglik</button>
+      <button class="tb-btn" id="btn-fit-page" title="Sahifani ekranga moslash" type="button">Moslash</button>
+    </div>
+    <div class="tb-sep"></div>
+    <div class="tb-group">
+      <button class="tb-btn" id="btn-search" title="Matn qidirish (/)" type="button">Qidirish</button>
+      <button class="tb-btn" id="btn-bookmarks" title="Xatcho‘plar" type="button">Xatcho‘p</button>
+      <button class="tb-btn" id="btn-fullscreen" title="To‘liq ekran (f)" type="button">To‘liq ekran</button>
+      <button class="tb-btn" id="btn-download" title="Yuklab olish" type="button">Yuklab olish</button>
+    </div>
+  </div>
+
+  <div class="reader-container" id="reader-root">
+    <div class="reader-loading" id="reader-loading">
+      <div class="spinner"></div>
+      <span>PDF yuklanmoqda...</span>
+    </div>
+    <div class="reader-error hidden" id="reader-error">
+      <div class="empty-state">
+        <div class="icon">⚠️</div>
+        <p id="reader-error-text">PDF yuklanmadi</p>
+        <button class="btn btn-primary" id="btn-retry" type="button">Qayta urinish</button>
+      </div>
+    </div>
+    <div id="pdf-canvas-wrap" class="hidden">
+      <canvas id="pdf-canvas"></canvas>
+      <canvas id="pdf-highlight-layer"></canvas>
+    </div>
+  </div>
+
+  <aside class="search-panel" id="search-panel" aria-label="Matn qidirish">
+    <input type="search" id="search-input" placeholder="PDF ichidan qidirish..." aria-label="Qidiruv so‘zi">
+    <div class="results" id="search-results"><div class="no-results">So‘z kiriting — barcha sahifalarda qidiramiz.</div></div>
+  </aside>
+
+  <aside class="side-panel" id="bookmark-panel" aria-label="Xatcho‘plar">
+    <h4>Xatcho‘plar</h4>
+    <div style="display:flex;gap:8px;margin-bottom:10px">
+      <input type="text" id="bm-note" placeholder="Izoh (ixtiyoriy)" style="flex:1;height:34px;padding:0 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:13px">
+      <button class="btn btn-primary btn-sm" id="bm-add" type="button">Qo‘shish</button>
+    </div>
+    <div id="bm-list"></div>
+  </aside>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/download.js"></script>
+  <script type="module" src="/js/reader.js"></script>
+</body>
+</html>
